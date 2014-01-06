@@ -27,7 +27,7 @@ module Commontator
           def thread
             raw = thread_raw
             return raw unless raw.nil?
-            return Commontator::Thread.find_or_create_by_commontable_type_and_commontable_id(self.class.name, id) \
+            return Commontator::Thread.find_or_create_by(commontable_type: self.class.name, commontable_id: id) \
               unless id.nil?
             self.thread = Commontator::Thread.new
             self.thread.commontable = self
